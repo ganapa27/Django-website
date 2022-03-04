@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <title>Signup Form</title>
+</head>
+<body>
+    <h1>Enter Signup Details</h1>
+    <br>
+    <!-- <table border ="1"> -->
+    <form method="POST">
+        {% csrf_token %}
+        {% if messages %} 
+            {% for message in messages %}
+                <div class = "alert alert-warning alert-dismissible fade show" role = "alert">
+                    <br>
+                    <b>{{message}}</b>
+                    <br>
+                </div> 
+            {% endfor %}
+        {% endif %}
+        {% for fm in form %}
+            {{fm.label_tag}}
+            {{fm}}
+            <br>
+            <small>{{fm.errors|striptags}}</small><br>
+        {% endfor %}
+    <!-- </table> -->
+    <input type="submit" value="Signup"/> | <a href="{% url 'loginpage' %}">Login</a>
+    <h1>{{error}}</h1> 
+    <h1>{{info}}</h1>
+    </form>
+</body>
+</html>
